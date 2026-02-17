@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* =========================
+  Design System (Dark Default)
+========================= */
+
+/*
+Primary Colors:
+1. #F77E2D; Inspired from iPhone 15 Pro Max
+2. #837F7D; Inspired from iPhone 17 Pro Max
+*/
+
+:root {
+  --color-bg: #121212;
+  --color-card: #1A1A1A;
+  --color-text: #E5E7EB;
+  --color-text-muted: #9CA3AF;
+  --color-primary: #F77E2D;
+  --color-secondary: #8B5CF6;
+}
+
+/* Light Mode (future ready) */
+.light {
+  --color-bg: #F9FAFB;
+  --color-card: #FFFFFF;
+  --color-text: #111827;
+  --color-text-muted: #4B5563;
+}
+
+/* Global base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Roboto Condensed", sans-serif;
+}
