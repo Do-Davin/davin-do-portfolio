@@ -37,3 +37,18 @@ body {
   color: var(--color-text);
   font-family: "Roboto Condensed", sans-serif;
 }
+
+/* Rendering optimizations to avoid subpixel-AA/compositing flicker on macOS Chrome */
+html, body, input, button, textarea, select {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Stabilize text that uses bg-clip-text / animated backgrounds */
+.bg-clip-text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
