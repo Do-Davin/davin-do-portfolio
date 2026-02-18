@@ -2,7 +2,7 @@ import Container from '../layout/Container';
 
 export default function Featured() {
   return (
-    <section className="py-32">
+    <section id="project" className="py-32">
       <Container>
         <div className="mb-20">
           <h2 className="text-4xl font-heading">Featured Work</h2>

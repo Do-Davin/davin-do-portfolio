@@ -4,7 +4,7 @@ import TechStackInline from './TechStackInline';
 
 export default function About() {
   return (
-    <section className="py-32">
+    <section id="about" className="py-32">
       <Container>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           {/* LEFT */}

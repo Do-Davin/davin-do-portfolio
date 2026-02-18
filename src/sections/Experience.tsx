@@ -2,7 +2,7 @@ import Container from '../layout/Container';
 
 export default function Experience() {
   return (
-    <section className="py-32">
+    <section id="experience" className="py-32">
       <Container>
         <div className="max-w-5xl mx-auto">
           {/* Title */}

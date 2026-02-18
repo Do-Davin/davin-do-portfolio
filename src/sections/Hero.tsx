@@ -3,7 +3,7 @@ import AnimatedShinyText from '../components/AnimatedShinyText';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center">
+    <section id="home" className="min-h-screen flex items-center">
       <Container>
         <div className="text-center">
           <p className="text-sm tracking-widest uppercase text-gray-400">Software Engineering</p>
