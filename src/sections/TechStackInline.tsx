@@ -43,19 +43,19 @@ export default function TechStackInline() {
 
         <div className="flex flex-wrap gap-6">
           <div className={itemStyle}>
+            <SiReact size={18} /> React
+          </div>
+          <div className={itemStyle}>
             <SiVuedotjs size={18} /> Vue
           </div>
           <div className={itemStyle}>
-            <SiNestjs size={18} /> NestJS
+            <SiTailwindcss size={18} /> Tailwind
           </div>
           <div className={itemStyle}>
             <SiSpringboot size={18} /> Spring Boot
           </div>
           <div className={itemStyle}>
-            <SiReact size={18} /> React
-          </div>
-          <div className={itemStyle}>
-            <SiTailwindcss size={18} /> Tailwind
+            <SiNestjs size={18} /> NestJS
           </div>
         </div>
       </div>
