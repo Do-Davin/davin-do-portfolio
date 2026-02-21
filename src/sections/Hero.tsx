@@ -3,7 +3,12 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 import Container from '../layout/Container';
 
 /* ── rotating role titles ── */
-const roles = ['Full-Stack Developer', 'Software Engineer', 'UI / UX Enthusiast', 'Problem Solver'];
+const roles = [
+  'Full-Stack Developer',
+  'Software Engineer',
+  'System Architecture Design',
+  'Problem Solver',
+];
 
 const nameLetters = 'Davin'.split('');
 
@@ -74,9 +79,9 @@ export default function Hero() {
     >
       {/* ── background layer ── */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* orb 1 – warm */}
+        {/* orb 1 – warm — scaled down on mobile so it doesn't bleed */}
         <motion.div
-          className="absolute top-[18%] left-[10%] w-130 h-130 rounded-full"
+          className="absolute top-[18%] left-[10%] w-72 h-72 sm:w-130 sm:h-130 rounded-full"
           style={{
             background: 'radial-gradient(circle, rgba(247,126,45,0.07) 0%, transparent 70%)',
           }}
@@ -89,7 +94,7 @@ export default function Hero() {
         />
         {/* orb 2 – cool */}
         <motion.div
-          className="absolute bottom-[12%] right-[8%] w-110 h-110 rounded-full"
+          className="absolute bottom-[12%] right-[8%] w-64 h-64 sm:w-110 sm:h-110 rounded-full"
           style={{
             background: 'radial-gradient(circle, rgba(139,92,246,0.055) 0%, transparent 70%)',
           }}
@@ -172,7 +177,7 @@ export default function Hero() {
           {/* rotating role */}
           <motion.div variants={fadeUp} className="mt-5 flex items-center gap-3 h-7">
             <motion.div
-              className="w-8 h-px bg-(--color-primary)"
+              className="w-8 h-px bg-(--color-primary) flex-shrink-0"
               initial={{ scaleX: 0, originX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.1, duration: 0.7, ease: 'easeOut' }}
@@ -181,7 +186,7 @@ export default function Hero() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roleIndex}
-                  className="block text-xs sm:text-sm tracking-[0.22em] uppercase text-gray-400"
+                  className="block text-xs sm:text-sm tracking-[0.22em] uppercase text-gray-400 whitespace-nowrap"
                   initial={{ y: 22, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -22, opacity: 0 }}
@@ -198,9 +203,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-10 text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg"
           >
-            I craft scalable web applications with{' '}
-            <span className="text-gray-200">production-ready architecture</span>, shipping clean
-            code that performs at scale.
+            I build scalable web applications with{' '}
+            <span className="text-(--color-primary)">production-ready architecture</span>, shipping
+            clean code that performs at scale.
           </motion.p>
 
           {/* CTAs */}
@@ -233,19 +238,19 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* tech hint */}
+          {/* tech hint — wraps gracefully on small screens */}
           <motion.div
             variants={fadeUp}
-            className="mt-20 flex items-center gap-4 text-[11px] tracking-[0.18em] uppercase text-gray-600"
+            className="mt-20 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] tracking-[0.18em] uppercase text-gray-600"
           >
-            <span className="w-12 h-px bg-white/6 block" />
-            <span>React</span>
+            <span className="w-12 h-px bg-white/6 block flex-shrink-0" />
+            <span>JavaScript</span>
             <span className="text-white/10">·</span>
             <span>TypeScript</span>
             <span className="text-white/10">·</span>
-            <span>Node.js</span>
+            <span>React JS</span>
             <span className="text-white/10">·</span>
-            <span>Cloud</span>
+            <span>Spring Boot</span>
           </motion.div>
         </motion.div>
       </Container>

@@ -6,7 +6,9 @@ export default function Navbar() {
       <div className="border-b border-white/5 backdrop-blur-sm bg-black/40">
         <div className="max-w-6xl mx-auto px-6 md:px-12 h-18 flex items-center justify-between">
           {/* LEFT */}
-          <div className="font-heading text-lg text-(--color-primary) font-bold">Do Davin</div>
+          <div className="font-heading text-lg text-(--color-primary) font-bold uppercase">
+            Do Davin
+          </div>
 
           {/* CENTER */}
           <nav className="hidden md:flex items-center gap-10 text-sm text-gray-400">
