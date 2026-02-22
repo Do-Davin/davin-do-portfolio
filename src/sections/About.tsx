@@ -6,55 +6,88 @@ export default function About() {
   return (
     <section id="about" className="py-32">
       <Container>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          {/* LEFT */}
-          <div>
-            <h2 className="text-4xl font-heading mb-8">About Me</h2>
+        <div className="max-w-5xl mx-auto">
+          {/* Section label */}
+          <p
+            className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+            style={{ color: 'var(--color-primary)' }}
+          >
+            About
+          </p>
 
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
-              I am a software engineer focused on building scalable, production-ready web
-              application systems across frontend, backend, and database layers.
-            </p>
+          {/* Title row */}
+          <h2 className="font-heading text-4xl md:text-5xl leading-tight mb-12">Who I Am</h2>
 
-            <p className="text-lg text-gray-400 leading-relaxed mb-6">
-              My approach prioritizes architecture, system integrity, and long-term maintainability
-              over shortcuts.
-            </p>
+          {/* Main grid */}
+          <div className="grid md:grid-cols-[1fr_260px] gap-12 items-start">
+            {/* ── LEFT ── */}
+            <div>
+              {/* Bio */}
+              <div className="space-y-5 mb-10">
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
+                  I'm a{' '}
+                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
+                    fullstack software engineer
+                  </span>{' '}
+                  based in Phnom Penh, Cambodia — focused on building{' '}
+                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
+                    scalable, production-ready
+                  </span>{' '}
+                  web application systems across frontend, backend, and database layers.
+                </p>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
+                  My approach prioritizes{' '}
+                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
+                    clean architecture
+                  </span>
+                  , system integrity, and long-term maintainability over shortcuts. I care about the
+                  code that runs in production, not just the code that looks good in a demo.
+                </p>
+              </div>
 
-            <p className="text-lg text-gray-400 leading-relaxed">
-              Here are some technologies I have been working with:
-            </p>
-            <TechStackInline />
-          </div>
+              {/* Divider */}
+              <div className="h-px w-full mb-10" style={{ background: 'rgba(255,255,255,0.06)' }} />
 
-          {/* RIGHT */}
-          <div className="flex justify-center">
-            <div
-              className="
-                group
-                relative
-                rounded-2xl
-                overflow-hidden
-                border border-white/10
-                bg-neutral-900
-                shadow-xl shadow-black/40
-                transition-all duration-300 ease-out
-                hover:shadow-2xl hover:shadow-black/60
-                hover:-translate-y-1
-                hover:border-(--color-primary)
-              "
-            >
-              <img
-                src={profile}
-                alt="Do Davin"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  transition-transform duration-500 ease-out
-                  group-hover:scale-105
-                "
-              />
+              {/* Tech stack */}
+              <TechStackInline />
+            </div>
+
+            {/* ── RIGHT — Photo ── */}
+            <div className="flex md:justify-end justify-center">
+              <div
+                className="group relative w-[200px] md:w-[220px] flex-shrink-0 rounded-2xl overflow-hidden border transition-all duration-300"
+                style={{
+                  borderColor: 'rgba(255,255,255,0.08)',
+                  background: 'var(--color-card)',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--color-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
+              >
+                <img
+                  src={profile}
+                  alt="Do Davin"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Name tag overlay */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-4 py-3"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)',
+                  }}
+                >
+                  <p className="text-sm font-semibold text-white">Do Davin</p>
+                  <p className="text-xs" style={{ color: 'var(--color-primary)' }}>
+                    Software Engineering
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

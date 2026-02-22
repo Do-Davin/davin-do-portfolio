@@ -2,43 +2,59 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Container from '../layout/Container';
 
-/* ─── EmailJS config ───────────────────────────────────────────────────────────
-   1. Go to https://www.emailjs.com and create a free account
-   2. Add a Gmail service  →  copy the Service ID
-   3. Create an email template with these variables:
-        {{from_name}}  {{from_email}}  {{message}}
-      Copy the Template ID
-   4. Go to Account → API Keys → copy your Public Key
-   5. Replace the three constants below
-─────────────────────────────────────────────────────────────────────────────── */
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
+const COOLDOWN_SECONDS = 60; // prevent re-submit for 60s after success
+
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<Status>('idle');
+  const [cooldown, setCooldown] = useState(0);
+
+  const startCooldown = () => {
+    setCooldown(COOLDOWN_SECONDS);
+    const interval = setInterval(() => {
+      setCooldown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
 
+    // 🍯 Honeypot — bots fill hidden fields, humans don't
+    if (honeypotRef.current?.value) {
+      console.warn('[Contact] Honeypot triggered — submission blocked.');
+      return;
+    }
+
+    // Cooldown guard
+    if (cooldown > 0) return;
+
     setStatus('sending');
     try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        EMAILJS_PUBLIC_KEY
-      );
+      await emailjs.sendForm(SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY);
       setStatus('success');
       formRef.current.reset();
-    } catch {
+      startCooldown();
+    } catch (err) {
+      console.error('[EmailJS] Send failed:', err);
       setStatus('error');
     }
   };
+
+  const isDisabled = status === 'sending' || cooldown > 0;
 
   return (
     <section className="py-32">
@@ -152,6 +168,17 @@ export default function Contact() {
               }}
             >
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                {/* 🍯 Honeypot — hidden from real users, bots will fill this */}
+                <input
+                  ref={honeypotRef}
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ display: 'none' }}
+                />
+
                 {/* Name */}
                 <div>
                   <label
@@ -227,11 +254,12 @@ export default function Contact() {
                 {/* Submit button */}
                 <button
                   type="submit"
-                  disabled={status === 'sending'}
-                  className="w-full py-3 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed hover:opacity-90 hover:scale-[1.01] active:scale-[0.99]"
+                  disabled={isDisabled}
+                  className="w-full py-3 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 disabled:cursor-not-allowed hover:opacity-90 hover:scale-[1.01] active:scale-[0.99]"
                   style={{
                     background: 'var(--color-primary)',
                     color: '#000',
+                    opacity: isDisabled ? 0.6 : 1,
                   }}
                 >
                   {status === 'sending' ? (
@@ -252,6 +280,23 @@ export default function Contact() {
                         />
                       </svg>
                       Sending…
+                    </>
+                  ) : cooldown > 0 ? (
+                    <>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"
+                        />
+                      </svg>
+                      Wait {cooldown}s
                     </>
                   ) : (
                     <>
