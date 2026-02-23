@@ -9,11 +9,11 @@ const experiences = [
     startDate: '2025-10',
     period: 'Oct 2025 – Present',
     description:
-      'Working on backend systems for two core products — a POS system and a Donation Mobile App — built with Spring Boot.',
+      'Contributing to backend development for two products — a POS system and a Donation Mobile App — using Spring Boot.',
     responsibilities: [
       'Developed and maintained backend features for a POS system and a Donation Mobile App using Spring Boot.',
-      'Built an automated daily report pipeline with Apache Airflow and Python, scheduled via Docker for consistent delivery.',
-      'Tested and validated RESTful APIs to ensure reliability and correctness across endpoints.',
+      'Built an automated daily report pipeline using Apache Airflow and Python, deployed with Docker for scheduled execution.',
+      'Tested and validated RESTful APIs to ensure correctness and reliability across endpoints.',
     ],
   },
   // Add future roles here — the newest one (latest startDate) will always appear at the top automatically.

@@ -29,25 +29,25 @@ export default function About() {
                   style={{ color: 'var(--color-text-muted)' }}
                 >
                   I'm a{' '}
-                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
-                    fullstack software engineer
+                  <span style={{ color: 'var(--color-primary)' }} className="font-medium">
+                    fullstack developer
                   </span>{' '}
                   based in Phnom Penh, Cambodia — focused on building{' '}
-                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
-                    scalable, production-ready
+                  <span style={{ color: 'var(--color-primary)' }} className="font-medium">
+                    reliable, well-structured
                   </span>{' '}
-                  web application systems across frontend, backend, and database layers.
+                  web applications across the frontend, backend, and database layers.
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: 'var(--color-text-muted)' }}
                 >
-                  My approach prioritizes{' '}
-                  <span style={{ color: 'var(--color-text)' }} className="font-medium">
+                  My approach prioritises{' '}
+                  <span style={{ color: 'var(--color-primary)' }} className="font-medium">
                     clean architecture
                   </span>
-                  , system integrity, and long-term maintainability over shortcuts. I care about the
-                  code that runs in production, not just the code that looks good in a demo.
+                  , consistency, and long-term maintainability. I aim to write code that is
+                  production-ready and straightforward to maintain.
                 </p>
               </div>
 

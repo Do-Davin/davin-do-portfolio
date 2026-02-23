@@ -57,7 +57,7 @@ export default function Contact() {
   const isDisabled = status === 'sending' || cooldown > 0;
 
   return (
-    <section className="py-32">
+    <section id="contact" className="py-32">
       <Container>
         <div className="max-w-5xl mx-auto">
           {/* Section label */}
@@ -72,15 +72,15 @@ export default function Contact() {
             {/* ── LEFT ── */}
             <div>
               <h2 className="font-heading text-4xl md:text-5xl leading-tight mb-6">
-                Let's Build Something <span className="hero-gradient-text">Scalable</span>
+                Let's Work <span className="hero-gradient-text">Together</span>
               </h2>
 
               <p
                 className="text-sm leading-relaxed mb-10"
                 style={{ color: 'var(--color-text-muted)' }}
               >
-                If you're building a product and need a reliable fullstack engineer focused on
-                architecture and production quality — let's connect.
+                I'm open to internships, freelance work, and full-time opportunities. If you have a
+                project or role in mind, feel free to reach out.
               </p>
 
               {/* Info rows */}
@@ -103,7 +103,7 @@ export default function Contact() {
                       </svg>
                     ),
                     label: 'Email',
-                    value: 'dodavin96@email.com',
+                    value: 'davin.do.kh@gmail.com',
                   },
                   {
                     icon: (

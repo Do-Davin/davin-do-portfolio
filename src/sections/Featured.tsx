@@ -208,16 +208,6 @@ function CarouselHero() {
 
           {/* Info */}
           <div className="flex-shrink-0 flex flex-col items-center gap-2">
-            <h3 className="text-base font-heading tracking-wide text-white leading-tight">
-              {project.title}
-            </h3>
-            <p
-              className="text-[11px] uppercase tracking-[0.2em] font-medium"
-              style={{ color: 'var(--color-primary)' }}
-            >
-              {project.stack.join('  ·  ')}
-            </p>
-
             {/* Action icons */}
             <div className="flex items-center gap-2">
               {project.githubUrl && (

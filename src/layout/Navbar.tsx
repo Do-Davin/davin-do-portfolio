@@ -24,17 +24,32 @@ export default function Navbar() {
             <a href="#project" className="hover:text-(--color-primary) transition">
               Project
             </a>
+            <a href="#contact" className="hover:text-(--color-primary) transition">
+              Contact
+            </a>
           </nav>
 
           {/* RIGHT */}
           <div className="flex items-center gap-6 text-gray-400">
-            <a href="#" className="hover:text-(--color-primary) transition">
+            <a
+              href="https://github.com/Do-Davin"
+              className="hover:text-(--color-primary) transition"
+              target="_blank"
+            >
               <SiGithub size={18} />
             </a>
-            <a href="#" className="hover:text-(--color-primary) transition">
+            <a
+              href="https://www.linkedin.com/in/do-davin-598761370/"
+              className="hover:text-(--color-primary) transition"
+              target="_blank"
+            >
               <SiLinkedin size={18} />
             </a>
-            <a href="#" className="hover:text-(--color-primary) transition">
+            <a
+              href="https://www.facebook.com/share/17My2Sm5fk/?mibextid=wwXIfr"
+              className="hover:text-(--color-primary) transition"
+              target="_blank"
+            >
               <SiFacebook size={18} />
             </a>
 

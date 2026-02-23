@@ -3,12 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motio
 import Container from '../layout/Container';
 
 /* ── rotating role titles ── */
-const roles = [
-  'Full-Stack Developer',
-  'Software Engineer',
-  'System Architecture Design',
-  'Problem Solver',
-];
+const roles = ['Full-Stack Developer', 'Software Engineer', 'System Design', 'Problem Solver'];
 
 const nameLetters = 'Davin'.split('');
 
@@ -203,9 +198,9 @@ export default function Hero() {
             variants={fadeUp}
             className="mt-10 text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg"
           >
-            I build scalable web applications with{' '}
-            <span className="text-(--color-primary)">production-ready architecture</span>, shipping
-            clean code that performs at scale.
+            I build web applications with a focus on{' '}
+            <span className="text-(--color-primary)">clean architecture</span>, maintainable code,
+            and reliable delivery.
           </motion.p>
 
           {/* CTAs */}
